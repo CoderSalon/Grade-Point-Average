@@ -4,7 +4,7 @@ var fs = require("fs"),
 fs.readFile("./grades.csv", "utf8", function(err, data){
 	// console.log(data);
 	rows = data.split("\n");
-	fs.writeFileSync(outputPath,"Student ID,GPA");
+	fs.writeFileSync(outputPath,"Student ID,GPA\n");
 	for(var i=1; i<rows.length; i++){
 		var elems = rows[i].split(','),
 			score = 0;
@@ -19,6 +19,6 @@ fs.readFile("./grades.csv", "utf8", function(err, data){
 				score += 1;
 			}
 		}
-		fs.appendFileSync(outputPath,elems[0]+","+(score/5));
+		fs.appendFileSync(outputPath,elems[0]+","+(score/5)+"\n");
 	}
 });
